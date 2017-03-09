@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>AngularJS</title>
+	</head>
+	<body>
+		<div ng-app='firstApp' ng-controller='myController'>
+			{{test}}<br>
+			{{const}}
+		</div>
+		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.js"></script>
+		<script type="text/javascript">
+			var app = angular.module('firstApp', [])
+			app.controller('myController', function($scope, aConstant) {
+				$scope.test = 'Girish'
+				$scope.const = aConstant
+			})
+			app.constant('aConstant', 'heylo')
+		</script>
+	</body>
+</html>
