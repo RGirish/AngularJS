@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Angular Test</title>
+	</head>
+	<body>
+		<div ng-app="testModule" ng-controller="testCtrl">
+			{{name}}
+		</div>
+		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.js"></script>
+		<script type="text/javascript">
+			var app = angular.module('testModule', []);
+			app.controller('testCtrl', ['$scope', function ($scope) {
+				$scope.name = 'Girish';
+			}]);
+		</script>
+	</body>
+</html>
