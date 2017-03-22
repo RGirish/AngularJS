@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html ng-app="pizzaApp">
+	<head>
+		<title>Testing my understanding of Module 3</title>
+	</head>
+	<body ng-controller="orderCtrl">
+		<h1>{{model.title}}</h1>
+		<input type="text" ng-model = "model.searchText" placeholder="Search for toppings..." />
+		<div ng-hide="model.searchText">
+			Start typing above...
+		</div>
+		<div ng-show="model.searchText" ng-repeat="topping in model.toppingsAvailable | filter: model.searchText">
+			<span ng-click="addTopping(topping)">{{topping}}</span>
+		</div>
+		<h3 ng-hide="model.toppingsSelected.length === 0">Toppings Selected</h3>
+		<div ng-repeat="topping in model.toppingsSelected">
+			{{topping}}
+		</div>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+		<script type="text/javascript">
+			var pizzaApp = angular.module('pizzaApp', []);
+			pizzaApp.controller('orderCtrl', ['$scope', function ($scope) {
+				$scope.model = {
+					title: "Order a Pizza!",
+					toppingsAvailable : ['Cheese', 'Onions', 'Tomatoes', 'Pineapples', 'Bell Peppers', 'Banana Peppers', 'Roasted Red Peppers'],
+					toppingsSelected : []
+				};
+				$scope.addTopping = function(topping) {
+					$scope.model.toppingsSelected.push(topping);
+					$scope.model.searchText = null;
+				};
+			}]);
+		</script>
+	</body>
+</html>
